@@ -26,3 +26,7 @@ mvn clean install -DskipTests=true
 ```
 File file = VideoTransformer.transform("/home/omidp/taak/jpa.mp4", "/home/omidp/taak/"); // see testcase
 ```
+
+```
+ ffmpeg -i test.mp4 -vcodec libx264 -crf 20 -strict -2 output.mp4
+```
