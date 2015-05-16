@@ -15,8 +15,8 @@ mvn clean install -DskipTests=true
 
 ```
 <dependency>
-			<groupId>org.taak</groupId>
-			<artifactId>video</artifactId>
+			<groupId>com.taakestan</groupId>
+			<artifactId>auto-video-transcoder</artifactId>
 			<version>1.0</version>
 		</dependency>
 ```

@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.taak</groupId>
-	<artifactId>video</artifactId>
+	<groupId>com.taakestan</groupId>
+	<artifactId>auto-video-transcoder</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>video</name>
+	<name>auto-video-transcoder</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
