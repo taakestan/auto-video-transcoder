@@ -22,16 +22,16 @@ public class VideoTransformer
 
     
     /**
-     * @param fielPath : full file path in filesystem
+     * @param filePath : full file path in filesystem
      * @param outputDirectory : 
      * @return : null or outputdirectory + fileName_web.mp4 file
      */
-    public static File transform(String fielPath, String outputDirectory)
+    public static File transform(String filePath, String outputDirectory)
     {
        
         try
         {
-            File file = new File(fielPath);
+            File file = new File(filePath);
             if (file.exists() == false)
             {
                 throw new IllegalAccessException("File not found");
