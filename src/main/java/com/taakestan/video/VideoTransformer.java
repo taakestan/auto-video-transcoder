@@ -28,11 +28,7 @@ public class VideoTransformer
      */
     public static File transform(String fielPath, String outputDirectory)
     {
-        if (OS.isFamilyUnix() == false)
-        {
-            throw new UnsupportedOperationException("video can be converted in unix family OS only");
-        }
-
+       
         try
         {
             File file = new File(fielPath);
