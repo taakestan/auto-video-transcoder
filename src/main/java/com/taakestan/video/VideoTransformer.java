@@ -2,13 +2,14 @@ package com.taakestan.video;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteWatchdog;
-import org.apache.commons.exec.OS;
 import org.apache.commons.exec.PumpStreamHandler;
 
 /**
@@ -20,15 +21,16 @@ public class VideoTransformer
 
     private static final Logger log = Logger.getLogger(VideoTransformer.class.getName());
 
-    
     /**
-     * @param filePath : full file path in filesystem
-     * @param outputDirectory : 
+     * @param filePath
+     *            : full file path in filesystem
+     * @param outputDirectory
+     *            :
      * @return : null or outputdirectory + fileName_web.mp4 file
      */
-    public static File transform(String filePath, String outputDirectory)
+    public static File transform(String filePath, String outputDirectory, String[] options)
     {
-       
+
         try
         {
             File file = new File(filePath);
@@ -37,15 +39,15 @@ public class VideoTransformer
                 throw new IllegalAccessException("File not found");
             }
             CommandLine cmdLine = new CommandLine("ffmpeg");
-            cmdLine.addArgument("-i");
-            cmdLine.addArgument(file.getAbsolutePath());
-            cmdLine.addArgument("-vcodec");
-            cmdLine.addArgument("libx264");
-            cmdLine.addArgument("-crf");
-            cmdLine.addArgument("20");
-            // experimentaloption but what can you do
-            cmdLine.addArgument("-strict");
-            cmdLine.addArgument("-2");
+            Map map = new HashMap();
+            map.put("FILEPATH", file.getAbsolutePath());
+
+            for (int i = 0; i < options.length; i++)
+            {
+                String cmdArg = options[i];
+                cmdLine.addArgument(cmdArg, true);
+            }
+            cmdLine.setSubstitutionMap(map);
             //
             String fileName = file.getName();
             if (fileName.indexOf(".") > 0)
@@ -86,6 +88,11 @@ public class VideoTransformer
             log.log(Level.FINE, "something bad happened :-(");
         }
         return null;
+    }
+
+    public static File transform(String filePath, String outputDirectory)
+    {
+        return transform(filePath, outputDirectory, VideoOptions.MP4);
     }
 
 }
